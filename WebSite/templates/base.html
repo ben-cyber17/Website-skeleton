@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mio Sito{% endblock %}</title>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/"><strong>Mio Progetto</strong></a>
+            </div>
+            <ul>
+                <li><a href="{% url 'prodotti' %}">Prodotti</a></li>
+                <li><a href="{% url 'tecnologie' %}">Tecnologie</a></li>
+                <li><a href="{% url 'lavora_con_noi' %}">Lavora con noi</a></li>
+                <li><a href="{% url 'contatti' %}">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2026 [Autore]. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+
+</body>
+</html>

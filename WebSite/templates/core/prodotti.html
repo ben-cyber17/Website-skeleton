@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}I Nostri Prodotti - Mio Sito{% endblock %}
+
+{% block content %}
+    <h1>Scopri i nostri prodotti</h1>
+    <div class="prodotti-grid">
+        {% for prodotto in prodotti %}
+            <div class="prodotto-card">
+                <img src="{{ prodotto.immagine.url }}" alt="{{ prodotto.nome }}">
+                <h2>{{ prodotto.nome }}</h2>
+                <p>{{ prodotto.descrizione_breve }}</p>
+                <span>Prezzo: €{{ prodotto.prezzo }}</span>
+            </div>
+        {% empty %}
+            <p>Non ci sono prodotti disponibili al momento.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

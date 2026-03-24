@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contattaci - Mio Sito{% endblock %}
+
+{% block content %}
+<div class="contatti-container" style="max-width: 800px; margin: 0 auto;">
+    <h1 style="text-align: center; margin-bottom: 10px;">Inviaci un messaggio</h1>
+    <p style="text-align: center; color: #666; margin-bottom: 30px;">
+        Hai domande sui nostri prodotti o sulle tecnologie che usiamo? Compila il form qui sotto.
+    </p>
+
+    <div class="form-wrapper">
+        <form method="POST" novalidate>
+            {% csrf_token %} 
+            
+            {% for field in form %}
+                <div class="form-group" style="margin-bottom: 20px;">
+                    
+                    {% if field.name == 'accetto_privacy' %}
+                        {# Layout speciale per la Privacy: spunta e testo affiancati #}
+                        <div class="privacy-row">
+                            {{ field }}
+                            <label for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                            </label>
+                        </div>
+                    {% else %}
+                        {# Layout standard: etichetta sopra e campo sotto #}
+                        <label for="{{ field.id_for_label }}" style="display: block; font-weight: bold; margin-bottom: 5px;">
+                            {{ field.label }}
+                        </label>
+                        {{ field }}
+                    {% endif %}
+
+                    {# Visualizzazione errori specifica per ogni campo #}
+                    {% if field.errors %}
+                        <div class="errors" style="color: var(--accent-color); font-size: 0.9rem; margin-top: 5px;">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn-invia">Invia Messaggio</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - Benvenuti nel mio Progetto{% endblock %}
+
+{% block content %}
+<div class="hero-section" style="text-align: center; padding: 60px 20px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h1 style="font-size: 2.5rem; color: var(--primary-color);">Benvenuti nel mio sito Django</h1>
+    <p style="font-size: 1.2rem; color: #666; max-height: 600px; margin: 20px auto;">
+        Esplora i nostri prodotti innovativi e le tecnologie all'avanguardia che utilizziamo ogni giorno.
+    </p>
+    <div style="margin-top: 30px;">
+        <a href="{% url 'prodotti' %}" class="btn-invia" style="text-decoration: none; display: inline-block; width: auto; padding: 12px 40px; margin: 10px;">
+            Vedi Prodotti
+        </a>
+        <a href="{% url 'contatti' %}" class="btn-invia" style="text-decoration: none; display: inline-block; width: auto; padding: 12px 40px; margin: 10px; background-color: var(--primary-color);">
+            Contattaci
+        </a>
+    </div>
+</div>
+
+<div class="features-preview" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 50px;">
+    <div style="background: #fff; padding: 20px; border-radius: 10px; text-align: center;">
+        <h3>🚀 Tecnologia</h3>
+        <p>Utilizziamo stack moderni per performance elevate.</p>
+    </div>
+    <div style="background: #fff; padding: 20px; border-radius: 10px; text-align: center;">
+        <h3>🛠️ Qualità</h3>
+        <p>Ogni prodotto è curato nei minimi dettagli.</p>
+    </div>
+    <div style="background: #fff; padding: 20px; border-radius: 10px; text-align: center;">
+        <h3>👨‍💻 Team</h3>
+        <p>Un gruppo di esperti al tuo servizio.</p>
+    </div>
+</div>
+{% endblock %}

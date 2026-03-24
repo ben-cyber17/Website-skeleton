@@ -1,0 +1,240 @@
+/* --- Impostazioni Generali --- */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-bg: #f4f7f6;
+    --text-color: #333;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Header e Navigazione --- */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .logo a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* --- Main Content --- */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    min-height: 70vh;
+}
+
+/* --- Griglia Prodotti e Card --- */
+.prodotti-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.prodotto-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, opacity 0.6s ease-out; /* Aggiunto supporto per animazione JS */
+}
+
+.prodotto-card:hover {
+    transform: translateY(-10px);
+}
+
+.prodotto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.prodotto-card h2, .prodotto-card p, .prodotto-card span {
+    padding: 0 15px;
+}
+
+.prodotto-card span {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+/* --- Form Contatti --- */
+form {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Campi di testo generali */
+input:not([type="checkbox"]), 
+textarea, 
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+/* --- Gestione Privacy --- */
+/* RESET SPECIFICO PER PRIVACY */
+.privacy-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important; /* Allinea in alto se il testo è lungo */
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    margin: 25px 0 !important;
+    text-align: left !important; /* Forza il testo a sinistra */
+    width: 100%;
+}
+
+/* FORZA IL CHECKBOX A NON ESSERE GRANDE */
+.privacy-row input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important; /* Impedisce che si rimpicciolisca */
+    margin: 0 !important;
+    padding: 0 !important;
+    appearance: checkbox !important; /* Forza l'aspetto standard */
+    -webkit-appearance: checkbox !important;
+    cursor: pointer;
+}
+
+/* FORZA IL TESTO A STARE DI FIANCO */
+.privacy-row label {
+    display: inline-block !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* --- Bottone e Spinner --- */
+.btn-invia {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: 14px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-invia:hover {
+    background-color: #2980b9;
+}
+
+.spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+    margin-left: 12px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* --- Messaggi Alert --- */
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}

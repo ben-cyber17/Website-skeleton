@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Le Nostre Tecnologie - Mio Sito{% endblock %}
+
+{% block extra_css %}
+<style>
+    .tecnologie-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    .tecnologia-item {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        padding: 20px;
+        transition: transform 0.2s;
+    }
+    .tecnologia-item:hover {
+        transform: translateY(-5px);
+    }
+    .tecnologia-icon {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-right: 30px;
+    }
+    .tecnologia-info h2 {
+        margin: 0 0 10px 0;
+        color: #333;
+    }
+    .tecnologia-info p {
+        color: #666;
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="tecnologie-container">
+    <h1>Le Tecnologie che utilizziamo</h1>
+    <p>Utilizziamo le migliori soluzioni tecnologiche per garantire performance e scalabilità.</p>
+
+    <div class="tecnologie-list">
+        {% for tecnologia in tecnologie %}
+            <article class="tecnologia-item">
+                {% if tecnologia.icona %}
+                    <img src="{{ tecnologia.icona.url }}" alt="{{ tecnologia.nome }}" class="tecnologia-icon">
+                {% else %}
+                    <div class="tecnologia-icon" style="background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 50%;">
+                        <span>TB</span>
+                    </div>
+                {% endif %}
+                
+                <div class="tecnologia-info">
+                    <h2>{{ tecnologia.nome }}</h2>
+                    <p>{{ tecnologia.descrizione }}</p>
+                </div>
+            </article>
+        {% empty %}
+            <p>Al momento non sono state inserite tecnologie.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

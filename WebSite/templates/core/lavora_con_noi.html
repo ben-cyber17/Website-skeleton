@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Lavora con Noi - Mio Sito{% endblock %}
+
+{% block content %}
+<div class="career-header" style="text-align: center; margin-bottom: 50px;">
+    <h1>Unisciti al nostro Team</h1>
+    <p style="color: #666; max-width: 700px; margin: 0 auto;">
+        Siamo sempre alla ricerca di talenti appassionati di tecnologia. 
+        Dai un'occhiata alle posizioni aperte e inviaci la tua candidatura.
+    </p>
+</div>
+
+<div class="posizioni-container">
+    {% for posizione in posizioni %}
+        <div class="posizione-card" style="background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 5px solid var(--secondary-color);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <h2 style="margin: 0; color: var(--primary-color);">{{ posizione.titolo }}</h2>
+                <span class="badge" style="background: #e8f4fd; color: var(--secondary-color); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold;">
+                    {{ posizione.dipartimento }}
+                </span>
+            </div>
+            
+            <p style="font-size: 0.9rem; color: #999; margin-top: 5px;">
+                Pubblicata il: {{ posizione.data_pubblicazione|date:"d M Y" }}
+            </p>
+
+            <div class="descrizione" style="margin-top: 20px;">
+                <h3 style="font-size: 1.1rem;">Descrizione del ruolo</h3>
+                <p>{{ posizione.descrizione|linebreaks }}</p>
+            </div>
+
+            <div class="requisiti" style="margin-top: 20px;">
+                <h3 style="font-size: 1.1rem;">Requisiti</h3>
+                <p>{{ posizione.requisiti|linebreaks }}</p>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <a href="{% url 'contatti' %}" class="btn-invia" style="display: inline-block; text-decoration: none; text-align: center; width: auto; padding: 10px 30px;">
+                    Candidati ora
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <div style="text-align: center; padding: 50px; background: #fff; border-radius: 10px;">
+            <p>Al momento non ci sono posizioni aperte. Torna a trovarci presto!</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
