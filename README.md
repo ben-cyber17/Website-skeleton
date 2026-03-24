@@ -1,2 +1,1 @@
-# Website-skeleton
-The repo contains banckend programming scripts 
+This repository contains the core programming scripts and assets for website. The goal of this project is to provide a seamless user experience and high-performance backend for little private company and private user.
